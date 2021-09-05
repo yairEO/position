@@ -7,7 +7,7 @@
  * @param {Array} offset distance (in pixels) from original placement position ("10px 20px" or just "10px" for both horizontal & vertical)
  */
 
- const position = props => {
+const position = props => {
   var {target, ref, offset, placement, prevPlacement, useRaf = true} = props,
       pos = {x:ref.x, y:ref.y},
       refRect = (ref && ref.x) ? {...ref} : {},
