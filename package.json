@@ -41,6 +41,7 @@
             "default": "./dist/position.umd.js"
         }
     },
+    "browser": "./dist/position.umd.js" ,
     "files": [
         "/dist"
     ],

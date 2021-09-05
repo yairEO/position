@@ -7,7 +7,7 @@
 </p>
 
 <h1 align="center">
-  Position a DOM element at a certain X,Y or next to another element
+  Position DOM element at X,Y or next to another element
 </h1>
 
 ## Install
