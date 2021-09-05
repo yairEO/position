@@ -1,6 +1,6 @@
 {
     "name": "@yaireo/position",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "homepage": "https://jsbin.com/beqosub/edit?html,css,output",
     "description": "Position a DOM element at a certain X,Y or next to another element",
     "keywords": [

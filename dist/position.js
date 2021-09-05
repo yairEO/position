@@ -1,7 +1,7 @@
 /**
   * @yaireo/position - Position a DOM element at a certain X,Y or next to another element
   *
-  * @version v1.0.5
+  * @version v1.0.6
   * @homepage https://jsbin.com/beqosub/edit?html,css,output
   */
 
@@ -16,7 +16,7 @@
 
 const position = props => {
   var {target, ref, offset, placement, prevPlacement, useRaf = true} = props,
-      pos = {x:ref.x, y:ref.y},
+      pos = {x:ref.x, y:ref.y, h:0, w:0},
       refRect = (ref && ref.x) ? {...ref} : {},
       docElm = document.documentElement,
       vpSize = { w: docElm.clientWidth, h: docElm.clientHeight },
@@ -34,17 +34,17 @@ const position = props => {
     pos.y = refRect.y
     pos.w = refRect.width
     pos.h = refRect.height
-
-    // horizontal
-    if( placement[0] == 'left' )       pos.x -= targetSize.w + offset[0];
-    else if( placement[0] == 'right' ) pos.x += pos.w + offset[0];
-    else                               pos.x -= targetSize.w/2 - pos.w/2;
-
-    // vertical
-    if( placement[1] == 'above' )      pos.y -= targetSize.h + offset[1];
-    else if( placement[1] == 'below' ) pos.y += pos.h + offset[1];
-    else                               pos.y -= targetSize.h/2 - pos.h/2;
   }
+
+  // horizontal
+  if( placement[0] == 'left' )       pos.x -= targetSize.w + offset[0];
+  else if( placement[0] == 'right' ) pos.x += pos.w + offset[0];
+  else                               pos.x -= targetSize.w/2 - pos.w/2;
+
+  // vertical
+  if( placement[1] == 'above' )      pos.y -= targetSize.h + offset[1];
+  else if( placement[1] == 'below' ) pos.y += pos.h + offset[1];
+  else                               pos.y -= targetSize.h/2 - pos.h/2;
 
   const overflow = {
     top   : pos.y < 0,
