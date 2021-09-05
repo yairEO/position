@@ -1,11 +1,4 @@
 <p align="center">
-  <a href='https://yaireo.github.io/position/'>
-    <img src="./demo.apng?sanitize=true" alt="color picker demo video"/>
-  </a>
-<p>
-
-
-<p align="center">
   <a href='https://www.npmjs.com/package/@yaireo/position'>
       <img src="https://badgen.net/npm/v/@yaireo/position?color=red" />
   </a>
