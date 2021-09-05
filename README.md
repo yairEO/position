@@ -18,6 +18,10 @@
 npm i @yaireo/position -S
 ```
 
+### UMD file link:
+
+    https://unpkg.com/@yaireo/position
+
 ## Example
 ```js
 import position from '@yarieo/position'
