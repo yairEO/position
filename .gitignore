@@ -1,0 +1,5 @@
+node_modules
+.DS_Store
+TODO.md
+tests/__image_snapshots__
+demo.gif

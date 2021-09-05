@@ -1,0 +1,62 @@
+{
+    "name": "@yaireo/position",
+    "version": "1.0.0",
+    "homepage": "https://yaireo.github.io/position",
+    "description": "Position a DOM element at a certain X,Y or next to another element",
+    "keywords": [
+        "color",
+        "colors",
+        "picker",
+        "javascript",
+        "component",
+        "lightweight"
+    ],
+    "license": "MIT",
+    "browserslist": [
+        ">3% and ie 11",
+        "not dead",
+        "not ie < 11",
+        "not IE_Mob 11",
+        "not op_mini all"
+    ],
+    "scripts": {
+        "start": "npm run build",
+        "build": "npm run clean && npm run umd",
+        "umd": "babel src/position.js -o dist/position.umd.js",
+        "clean": "rm -rf dist && npm run makedir",
+        "header": "headr dist/position.umd.js -o=dist/position.umd.js --version --homepage  &&  headr src/position.js -o=dist/position.js --version --homepage",
+        "version": "npm run build && npm run header && git add .",
+        "prepublishOnly": "pkg-ok"
+    },
+    "author": {
+        "name": "Yair Even-Or",
+        "email": "vsync.design@gmail.com"
+    },
+    "main": "./dist/position.js",
+    "module": "./dist/position.js",
+    "exports": {
+        "./": {
+            "require": "./dist/position.umd.js",
+            "import": "./dist/position.js",
+            "default": "./dist/position.umd.js"
+        }
+    },
+    "files": [
+        "/dist"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/yairEO/position.git"
+    },
+    "bugs": {
+        "url": "https://github.com/yaireo/position/issues"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.15.4",
+        "@babel/core": "^7.15.5",
+        "@babel/plugin-transform-modules-umd": "^7.14.5",
+        "babel-preset-minify": "^0.5.1",
+        "headr": "^0.0.4",
+        "rimraf": "^3.0.2"
+    }
+}
