@@ -1,7 +1,7 @@
 /**
   * @yaireo/position - Position a DOM element at a certain X,Y or next to another element
   *
-  * @version v1.0.0
+  * @version v1.0.2
   * @homepage https://yaireo.github.io/position
   */
 
