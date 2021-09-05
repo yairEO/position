@@ -71,13 +71,13 @@ const position = (props) => {
       ['pos-top', pos.y], // pos.y > offset[1] ? pos.y : 0
       ['pos-target-width', targetSize.w],
       ['pos-target-height', targetSize.h],
-      ['pos-ref-width', ref.width || 0],
-      ['pos-ref-height', ref.height || 0],
+      ['pos-ref-width', refRect.width || 0],
+      ['pos-ref-height', refRect.height || 0],
       ['pos-ref-left', refRect.x],
       ['pos-ref-top', refRect.y],
       ['window-scroll-y', window.scrollY],
       ['window-scroll-x', window.scrollX]
-    ].forEach(([k,v]) => target.style.setProperty('--'+k, v))
+    ].forEach(([k,v]) => target.style.setProperty('--'+k, Math.round(v)))
   })
 
   return {pos, placement}
