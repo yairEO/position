@@ -1,5 +1,5 @@
 <p align="center">
-  <a href='[httpssagify](https://jsbin.com/beqosub/edit?html,css,output)' title='See demo'><img src="demo.png"><a/>
+  <a href='https://jsbin.com/beqosub/edit?html,css,output' title='See demo'><img src="demo.png"><a/>
   <br><br>
   <a href='https://www.npmjs.com/package/@yaireo/position'>
       <img src="https://badgen.net/npm/v/@yaireo/position?color=red" />
