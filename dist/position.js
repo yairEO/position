@@ -1,7 +1,7 @@
 /**
   * @yaireo/position - Position a DOM element at a certain X,Y or next to another element
   *
-  * @version v1.0.4
+  * @version v1.0.5
   * @homepage https://jsbin.com/beqosub/edit?html,css,output
   */
 
@@ -14,7 +14,7 @@
  * @param {Array} offset distance (in pixels) from original placement position ("10px 20px" or just "10px" for both horizontal & vertical)
  */
 
- const position = props => {
+const position = props => {
   var {target, ref, offset, placement, prevPlacement, useRaf = true} = props,
       pos = {x:ref.x, y:ref.y},
       refRect = (ref && ref.x) ? {...ref} : {},

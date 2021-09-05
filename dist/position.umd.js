@@ -1,7 +1,7 @@
 /**
   * @yaireo/position - Position a DOM element at a certain X,Y or next to another element
   *
-  * @version v1.0.4
+  * @version v1.0.5
   * @homepage https://jsbin.com/beqosub/edit?html,css,output
   */
 
