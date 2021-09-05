@@ -73,7 +73,7 @@ This script adds *CSS variables* (custom properties) on the *target* element:
 Using the above mix of variables, write this CSS in your code to position the target:
 
 ```css
-{
+[positioned]{
   --x: calc(var(--pos-left) + var(--window-scroll-x));
   --y: calc(var(--pos-top) + var(--window-scroll-y));
   position: absolute;
