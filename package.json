@@ -1,6 +1,6 @@
 {
     "name": "@yaireo/position",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "homepage": "https://yaireo.github.io/position",
     "description": "Position a DOM element at a certain X,Y or next to another element",
     "keywords": [
@@ -24,6 +24,7 @@
         "build": "npm run clean && npm run umd",
         "umd": "babel src/position.js -o dist/position.umd.js",
         "clean": "rm -rf dist && npm run makedir",
+        "makedir": "mkdirp dist",
         "header": "headr dist/position.umd.js -o=dist/position.umd.js --version --homepage  &&  headr src/position.js -o=dist/position.js --version --homepage",
         "version": "npm run build && npm run header && git add .",
         "prepublishOnly": "pkg-ok"
@@ -41,7 +42,7 @@
             "default": "./dist/position.umd.js"
         }
     },
-    "browser": "./dist/position.umd.js" ,
+    "browser": "./dist/position.umd.js",
     "files": [
         "/dist"
     ],
@@ -58,6 +59,7 @@
         "@babel/plugin-transform-modules-umd": "^7.14.5",
         "babel-preset-minify": "^0.5.1",
         "headr": "^0.0.4",
+        "mkdirp": "^1.0.4",
         "rimraf": "^3.0.2"
     }
 }
