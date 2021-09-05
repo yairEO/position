@@ -1,8 +1,8 @@
 /**
   * @yaireo/position - Position a DOM element at a certain X,Y or next to another element
   *
-  * @version v1.0.3
-  * @homepage https://yaireo.github.io/position
+  * @version v1.0.4
+  * @homepage https://jsbin.com/beqosub/edit?html,css,output
   */
 
 (function(a,b){if("function"==typeof define&&define.amd)define(["exports"],b);else if("undefined"!=typeof exports)b(exports);else{var c={exports:{}};b(c.exports),a.position=c.exports}})("undefined"==typeof globalThis?"undefined"==typeof self?this:self:globalThis,function(a){"use strict";var b=Math.round;Object.defineProperty(a,"__esModule",{value:!0}),a.default=void 0;/**
