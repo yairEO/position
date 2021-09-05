@@ -7,17 +7,18 @@
  * @param {Array} offset distance (in pixels) from original placement position ("10px 20px" or just "10px" for both horizontal & vertical)
  */
 
-const position = (props) => {
-  var {target, ref, offset, placement, prevPlacement} = props,
+ const position = props => {
+  var {target, ref, offset, placement, prevPlacement, useRaf = true} = props,
       pos = {x:ref.x, y:ref.y},
       refRect = (ref && ref.x) ? {...ref} : {},
       docElm = document.documentElement,
       vpSize = { w: docElm.clientWidth, h: docElm.clientHeight },
       targetSize = { w: target.clientWidth, h: target.clientHeight };
 
+  raf = useRaf ? raf : cb => cb();
   prevPlacement = prevPlacement || [];
   placement = (placement||' ').split(' ').map((a,i) => a ? a : ['center', 'below'][i])  // [horizontal, vertical]
-  offset = offset ? [offset[0] || 0, offset[1] || offset[0] || 0] : []; // [horizontal, vertical]
+  offset = offset ? [offset[0] || 0, offset[1] || offset[0] || 0] : [0,0]; // [horizontal, vertical]
 
   // get [x,y] coordinates and adjust according to desired placement
   if( ref instanceof Element ){
@@ -64,18 +65,18 @@ const position = (props) => {
       ['pos-top', pos.y], // pos.y > offset[1] ? pos.y : 0
       ['pos-target-width', targetSize.w],
       ['pos-target-height', targetSize.h],
-      ['pos-ref-width', ref.width || 0],
-      ['pos-ref-height', ref.height || 0],
+      ['pos-ref-width', refRect.width || 0],
+      ['pos-ref-height', refRect.height || 0],
       ['pos-ref-left', refRect.x],
       ['pos-ref-top', refRect.y],
       ['window-scroll-y', window.scrollY],
       ['window-scroll-x', window.scrollX]
-    ].forEach(([k,v]) => target.style.setProperty('--'+k, v))
+    ].forEach(([k,v]) => target.style.setProperty('--'+k, Math.round(v)))
   })
 
   return {pos, placement}
 }
 
-const raf = requestAnimationFrame || (cb => setTimeout(cb, 1000/60))
+let raf = requestAnimationFrame || (cb => setTimeout(cb, 1000/60))
 
 export default position

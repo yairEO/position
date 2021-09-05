@@ -33,7 +33,11 @@ position({
   placement:'center above',
 
   // [optional] distance from reference element
-  offset: [20]
+  offset: [20],
+
+  // [optional] by default the positioning updates within a RequestAnimationFrame callback,
+  //but this can cause painting delays when resizing or scrolling fast.
+  useRaf: false,
 })
 ```
 
