@@ -35,13 +35,6 @@
     },
     "main": "./dist/position.js",
     "module": "./dist/position.js",
-    "exports": {
-        "./": {
-            "require": "./dist/position.umd.js",
-            "import": "./dist/position.js",
-            "default": "./dist/position.umd.js"
-        }
-    },
     "browser": "./dist/position.umd.js",
     "files": [
         "/dist"
