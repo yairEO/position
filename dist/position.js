@@ -1,7 +1,7 @@
 /**
   * @yaireo/position - Position a DOM element at a certain X,Y or next to another element
   *
-  * @version v1.0.2
+  * @version v1.0.3
   * @homepage https://yaireo.github.io/position
   */
 
@@ -14,17 +14,18 @@
  * @param {Array} offset distance (in pixels) from original placement position ("10px 20px" or just "10px" for both horizontal & vertical)
  */
 
-const position = (props) => {
-  var {target, ref, offset, placement, prevPlacement} = props,
+ const position = props => {
+  var {target, ref, offset, placement, prevPlacement, useRaf = true} = props,
       pos = {x:ref.x, y:ref.y},
       refRect = (ref && ref.x) ? {...ref} : {},
       docElm = document.documentElement,
       vpSize = { w: docElm.clientWidth, h: docElm.clientHeight },
       targetSize = { w: target.clientWidth, h: target.clientHeight };
 
+  raf = useRaf ? raf : cb => cb();
   prevPlacement = prevPlacement || [];
   placement = (placement||' ').split(' ').map((a,i) => a ? a : ['center', 'below'][i])  // [horizontal, vertical]
-  offset = offset ? [offset[0] || 0, offset[1] || offset[0] || 0] : []; // [horizontal, vertical]
+  offset = offset ? [offset[0] || 0, offset[1] || offset[0] || 0] : [0,0]; // [horizontal, vertical]
 
   // get [x,y] coordinates and adjust according to desired placement
   if( ref instanceof Element ){
@@ -83,6 +84,6 @@ const position = (props) => {
   return {pos, placement}
 }
 
-const raf = requestAnimationFrame || (cb => setTimeout(cb, 1000/60))
+let raf = requestAnimationFrame || (cb => setTimeout(cb, 1000/60))
 
 export default position
