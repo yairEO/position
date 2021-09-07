@@ -1,6 +1,6 @@
 {
     "name": "@yaireo/position",
-    "version": "1.0.0",
+    "version": "1.0.7",
     "homepage": "https://jsbin.com/beqosub/edit?html,css,output",
     "description": "Position a DOM element at a certain X,Y or next to another element",
     "keywords": [
@@ -21,7 +21,7 @@
     ],
     "scripts": {
         "start": "npm run build",
-        "build": "npm run clean && npm run umd",
+        "build": "npm run clean && npm run umd && npm run header",
         "umd": "babel src/position.js -o dist/position.umd.js",
         "clean": "rm -rf dist && npm run makedir",
         "makedir": "mkdirp dist",

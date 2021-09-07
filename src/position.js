@@ -7,10 +7,11 @@
  * @param {Array} offset distance (in pixels) from original placement position ("10px 20px" or just "10px" for both horizontal & vertical)
  */
 
-const position = props => {
+ const position = props => {
   var {target, ref, offset, placement, prevPlacement, useRaf = true} = props,
       pos = {x:ref.x, y:ref.y, h:0, w:0},
       refRect = (ref && ref.x) ? {...ref} : {},
+      refWindow,
       docElm = document.documentElement,
       vpSize = { w: docElm.clientWidth, h: docElm.clientHeight },
       targetSize = { w: target.clientWidth, h: target.clientHeight };
@@ -20,13 +21,25 @@ const position = props => {
   placement = (placement||' ').split(' ').map((a,i) => a ? a : ['center', 'below'][i])  // [horizontal, vertical]
   offset = offset ? [offset[0] || 0, offset[1] || offset[0] || 0] : [0,0]; // [horizontal, vertical]
 
-  // get [x,y] coordinates and adjust according to desired placement
-  if( ref instanceof Element ){
+  // if "ref" is a DOM element, get [x,y] coordinates and adjust according to desired placement
+  if( ref.parentNode ){
+    refWindow = ref.ownerDocument.defaultView;
     refRect = ref.getBoundingClientRect() // [x,y] are top-left coordinates
     pos.x = refRect.x
     pos.y = refRect.y
     pos.w = refRect.width
     pos.h = refRect.height
+
+    // if ref element is within an iframe, get it's position relative to the viewport and not its local window
+    if( refWindow != refWindow.parent ){
+      for (let frameElement of refWindow.parent.document.getElementsByTagName('iframe')) {
+        if (frameElement.contentWindow  === refWindow) {
+          let iframeRect = frameElement.getBoundingClientRect();
+          pos.x += iframeRect.x
+          pos.y += iframeRect.y
+        }
+      }
+    }
   }
 
   // horizontal
