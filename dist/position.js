@@ -1,7 +1,7 @@
 /**
   * @yaireo/position - Position a DOM element at a certain X,Y or next to another element
   *
-  * @version v1.0.7
+  * @version v1.1.0
   * @homepage https://jsbin.com/beqosub/edit?html,css,output
   */
 
@@ -14,8 +14,8 @@
  * @param {Array} offset distance (in pixels) from original placement position ("10px 20px" or just "10px" for both horizontal & vertical)
  */
 
- const position = props => {
-  var {target, ref, offset, placement, prevPlacement, useRaf = true} = props,
+const position = props => {
+  var {target, ref, offset, placement, prevPlacement, useRaf = true, track} = props,
       pos = {x:ref.x, y:ref.y, h:0, w:0},
       refRect = (ref && ref.x) ? {...ref} : {},
       refWindow,
@@ -81,7 +81,7 @@
     target.setAttribute('data-placement', placement.join(' '));
     target.setAttribute('data-pos-overflow', Object.entries(overflow).reduce((acc, [k,v]) => v ? `${acc} ${k}` : acc , '').trim());
     [
-      ['pos-left', pos.x], // overflow.right ? vpSize.w - targetSize.w : pos.x
+      ['pos-left', overflow.right ? vpSize.w - targetSize.w : pos.x],
       ['pos-top', pos.y], // pos.y > offset[1] ? pos.y : 0
       ['pos-target-width', targetSize.w],
       ['pos-target-height', targetSize.h],
@@ -93,6 +93,21 @@
       ['window-scroll-x', window.scrollX]
     ].forEach(([k,v]) => target.style.setProperty('--'+k, Math.round(v)))
   })
+
+  // auto-reposition on any ancestor scroll
+  if( track?.scroll && !target.position__trackedScroll ){
+    // mark the node as tracked
+    target.position__trackedScroll = true;
+
+    // if any ancestor of refElement was scrolled, re-position the target
+    window.addEventListener('scroll', onScroll, true)
+
+    function onScroll(e){
+      // make sure the scrolled element contains the ref element
+      if( e.target.contains(refElement) )
+        position(props)
+    }
+  }
 
   return {pos, placement}
 }
