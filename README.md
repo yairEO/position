@@ -24,7 +24,7 @@ npm i @yaireo/position -S
 
 ## Example
 ```js
-import position from '@yarieo/position'
+import position from '@yaireo/position'
 
 position({
   // the element wished to be positioned in a certain place
