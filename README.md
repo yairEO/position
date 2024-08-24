@@ -48,7 +48,7 @@ position({
 ```
 
 This scripts places an element next to another element (at a certain prefered relative place).
-If you want to update the targer's position (relativce to the referece) when the page scrolls or resizes
+If you want to update the targer's position (relative to its referece node) when the page scrolls or resizes
 I advice adding observers:
 
 ```js
